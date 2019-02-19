@@ -19,6 +19,15 @@ public class BasketballPlayer
         this.heightInches = heightInches;
     }
 
+    public BasketballPlayer()
+    {
+        this.name = "First LastName";
+        this.age = 0;
+        this.jerseyNum = 0;
+        this.heightFeet = 0;
+        this.heightInches = 0;
+    }
+
     //Methods
     public void displayPlayer()
     {
@@ -32,28 +41,24 @@ public class BasketballPlayer
     }
 
     //Getters
-    public String getName()
+    public String getNameString()
     {
         return this.name;
     }
 
-    public int getJerseyNum()
+    public String getJerseyNumString()
     {
-        return this.jerseyNum;
+        return "#" + this.jerseyNum;
     }
 
-    public int getAge()
+    public String getAgeString()
     {
-        return this.age;
+        return this.age + " Years old";
     }
 
-    public int getHeightFeet()
+    public String getHeightString()
     {
-        return this.heightFeet;
+        return this.heightFeet + "\' " + this.heightInches + "\" Tall";
     }
 
-    public int getHeightInches()
-    {
-        return this.heightInches;
-    }
 }

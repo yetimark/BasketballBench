@@ -9,26 +9,29 @@ import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity
 {
-    //ListView listView;
+    private ListView lv;
+    private BasketballPlayerArrayAdapter bpaa;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        //initializes the bench with empty strings and zeros
+        Core.setTheBench();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //ArrayAdapter<String> aa = new ArrayAdapter<String>(this, R.layout.list_view_row, Core.getTheBenchString());
-        //ListView lv = (ListView)this.findViewById(R.id.listView);
-        //lv.setAdapter(aa);
+        this.bpaa = new BasketballPlayerArrayAdapter(this, R.layout.custom_list_view, Core.getTheBench());
+        this.lv = (ListView)this.findViewById(R.id.listView);
+        this.lv.setAdapter(bpaa);
     }
 
     @Override
-    protected void onResume()
+    protected void onRestart()
     {
-        super.onResume();
-
-        ArrayAdapter<String> aa = new ArrayAdapter<String>(this, R.layout.list_view_row, Core.getTheBenchString());
-        ListView lv = (ListView)this.findViewById(R.id.listView);
-        lv.setAdapter(aa);
+        super.onRestart();
+        this.bpaa.notifyDataSetChanged();
+        Core.DisplayBench();
     }
 
     public void onNewPlayerToBenchPressed(View v)
